@@ -1,0 +1,28 @@
+const BASE_URL = 'http://127.0.0.1:8000/api/'
+
+export const register = async (data) => {
+    const options = {
+        method: 'POST',
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+    };
+
+    const response = await fetch(BASE_URL + "accounts/", options);
+    return await response.json()
+};
+
+export const login = async (data) => {
+    console.log(data)
+    const options = {
+        method: 'POST',
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+    };
+
+    const response = await fetch(BASE_URL + "accounts/login/", options);
+    return await response.json()
+};
