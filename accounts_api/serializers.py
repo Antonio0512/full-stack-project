@@ -12,10 +12,12 @@ class ProfilesSerializer(serializers.ModelSerializer):
             'password': {'write_only': True}
         }
 
-    def create(self, validated_data):
-        password = validated_data.pop('password')
-        user = models.UserProfile(**validated_data)
+    def save(self, **kwargs):
+        password = self.validated_data.get('password', None)
+        user = super().save(**kwargs)
 
-        user.set_password(password)
-        user.save()
+        if password:
+            user.set_password(password)
+            user.save()
+
         return user
