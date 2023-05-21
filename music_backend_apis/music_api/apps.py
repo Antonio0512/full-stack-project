@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AccountsApiConfig(AppConfig):
+class MusicApiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'accounts_api'
+    name = 'music_backend_apis.music_api'

@@ -28,8 +28,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
 
-    'accounts_api',
-    'music_api',
+    'music_backend_apis.accounts_api',
+    'music_backend_apis.music_api',
 ]
 
 MIDDLEWARE = [

@@ -1,101 +1,76 @@
-/* Global styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    background-color: #f2f2f2;
-}
-
-/* Header styles */
-header {
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
-
-header h1 {
-    font-size: 24px;
-}
-
-nav ul {
-    display: flex;
-}
-
-nav ul li + li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    font-weight: bold;
-    transition: all 0.2s ease-in-out;
-}
-
-nav ul li a:hover {
-    color: #f03a47;
-}
-
-/* Register section styles */
 .register-section {
-    background-color: #fff;
-    padding: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.register-section h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+.register-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  max-width: 800px;
+  margin: 30px auto;
 }
 
 .form-group {
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  margin-right: 10px;
+  font-weight: bold;
+  width: 120px;
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
-.form-group input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group textarea {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.form-group button[type="submit"] {
-    background-color: #f03a47;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.form-group textarea {
+  resize: vertical;
 }
 
-.form-group button[type="submit"]:hover {
-    background-color: #fff;
-    color: #f03a47;
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.register-button {
+  display: flex;
+  justify-content: center;
+  grid-column: 1 / -1;
+}
+
+.register-button button[type="submit"] {
+  background-color: #f03a47;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-button button[type="submit"]:hover {
+  background-color: #fff;
+  color: #f03a47;
 }
 
 .register-section p {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .register-section p a {
-    color: #f03a47;
+  color: #f03a47;
 }
