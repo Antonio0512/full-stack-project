@@ -5,5 +5,5 @@ from . import views
 urlpatterns = [
     path('', views.ProfilesApiView.as_view(), name='accounts'),
     path('<int:id>', views.ProfilesDetailsApiView.as_view(), name='account-details'),
-    path('login', views.LoginAPIView.as_view(), name='login')
+    path('login/', views.LoginAPIView.as_view(), name='login')
 ]

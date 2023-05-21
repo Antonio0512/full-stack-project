@@ -4,17 +4,17 @@ import { useForm } from "../../hooks/useForm";
 import { AuthContext } from "../../contexts/AuthContext";
 
 const loginFormKeys = {
-  Username: "username",
+  Email: "email",
   Password: "password",
 };
 
 export const Login = () => {
-  const { onLoginSubmit } = useContext(AuthContext);
+  const {onLoginSubmit} = useContext(AuthContext);
 
   const { onSubmit, onChangeHandler, values } = useForm(
     () => onLoginSubmit(values),
     {
-      [loginFormKeys.Username]: "",
+      [loginFormKeys.Email]: "",
       [loginFormKeys.Password]: "",
     }
   );
@@ -24,13 +24,13 @@ export const Login = () => {
       <h2>Login</h2>
       <form method="post" onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="text"
             id="username"
-            name="username"
+            name="email"
             onChange={onChangeHandler}
-            value={values[loginFormKeys.Username]}
+            value={values[loginFormKeys.Email]}
             required
           />
         </div>

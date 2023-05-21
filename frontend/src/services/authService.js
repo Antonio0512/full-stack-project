@@ -10,11 +10,10 @@ export const register = async (data) => {
     };
 
     const response = await fetch(BASE_URL + "accounts/", options);
-    return await response.json()
+    return await response.json();
 };
 
 export const login = async (data) => {
-    console.log(data)
     const options = {
         method: 'POST',
         headers: {
@@ -24,5 +23,5 @@ export const login = async (data) => {
     };
 
     const response = await fetch(BASE_URL + "accounts/login/", options);
-    return await response.json()
+    return await response.json();
 };

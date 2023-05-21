@@ -5,6 +5,7 @@ import {Route, Routes} from "react-router-dom";
 import {Register} from "./components/Register/Register";
 import {AuthProvider} from "./contexts/AuthContext";
 import {Login} from "./components/Login/Login";
+import {Logout} from "./components/Logout/Logout";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Route path="/" element={<Homepage/>}/>
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/login" element={<Login/>}/>
+                    <Route path="/logout" element={<Logout/>}/>
                 </Routes>
             </main>
             <Footer/>
