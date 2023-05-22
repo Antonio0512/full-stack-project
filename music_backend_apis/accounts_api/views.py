@@ -52,15 +52,6 @@ class ProfilesDetailsApiView(views.APIView):
         serializer = serializers.ProfilesSerializer(user)
         return Response({'user': serializer.data})
 
-    # def post(self, request, id):
-    #     user = models.UserProfile.objects.get(pk=id)
-    #     serializer = serializers.ProfilesSerializer(user, data=request.data)
-    #
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_200_OK)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
     def put(self, request, id):
         user = models.UserProfile.objects.get(pk=id)
         serializer = serializers.ProfilesSerializer(user, data=request.data, partial=True)
@@ -90,6 +81,10 @@ class ProfilesDetailsApiView(views.APIView):
 
     def delete(self, request, id):
         user = models.UserProfile.objects.get(pk=id)
+        token = Token.objects.get(user=user)
+        access_token = token.key
+
+        access_token.delete()
         user.delete()
         return Response(status=status.HTTP_200_OK)
 
