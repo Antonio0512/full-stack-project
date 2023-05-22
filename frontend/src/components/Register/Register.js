@@ -117,9 +117,9 @@ export const Register = () => {
         <div className="form-group">
           <label htmlFor="profilePicture">Profile Picture URL:</label>
           <input
-            type="url"
+            type="text"
             id="profilePicture"
-            name="profilePicture"
+            name="profile_picture"
             onChange={onChangeHandler}
             value={values[registerFormKeys.Profile_picture]}
             required

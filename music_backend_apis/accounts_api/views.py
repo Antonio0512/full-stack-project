@@ -32,7 +32,10 @@ class ProfilesApiView(views.APIView):
                     'email': user.email,
                     'username': user.username,
                     'first_name': user.first_name,
-                    'last_name': user.last_name
+                    'last_name': user.last_name,
+                    'age': user.age,
+                    'bio': user.bio,
+                    "profile_picture": user.profile_picture
                 }
             }
 
@@ -49,25 +52,40 @@ class ProfilesDetailsApiView(views.APIView):
         serializer = serializers.ProfilesSerializer(user)
         return Response({'user': serializer.data})
 
-    def post(self, request, id):
-        user = models.UserProfile.objects.get(pk=id)
-        serializer = serializers.ProfilesSerializer(user, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # def post(self, request, id):
+    #     user = models.UserProfile.objects.get(pk=id)
+    #     serializer = serializers.ProfilesSerializer(user, data=request.data)
+    #
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_200_OK)
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, id):
         user = models.UserProfile.objects.get(pk=id)
-        serializer = serializers.ProfilesSerializer(user, data=request.data)
+        serializer = serializers.ProfilesSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():
-            password = serializer.validated_data.get('password')
-            if password:
-                user.set_password(password)
-                user.save()
             serializer.save()
-            return Response(json.loads(json.dumps(serializer.data)), status=status.HTTP_200_OK)
+
+            token = Token.objects.get(user=user)
+            access_token = token.key
+
+            response_data = {
+                'access_token': access_token,
+                'user': {
+                    'id': user.id,
+                    'email': user.email,
+                    'username': user.username,
+                    'first_name': user.first_name,
+                    'last_name': user.last_name,
+                    'age': user.age,
+                    'bio': user.bio,
+                    "profile_picture": user.profile_picture
+                }
+            }
+
+            return Response(response_data, status=status.HTTP_200_OK)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id):
@@ -97,7 +115,10 @@ class LoginAPIView(ObtainAuthToken):
                 'email': user.email,
                 'username': user.username,
                 'first_name': user.first_name,
-                'last_name': user.last_name
+                'last_name': user.last_name,
+                'age': user.age,
+                'bio': user.bio,
+                "profile_picture": user.profile_picture
             }
         }
 
