@@ -1,33 +1,42 @@
 .logout-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 70vh;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.logout-container p {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .logout-content {
-  text-align: center;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
 
 .logout-button {
-  margin-right: 10px;
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+    margin-right: 10px;
+    font-size: 18px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .cancel-button {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+    background-color: #3498db;
+    font-size: 18px;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }

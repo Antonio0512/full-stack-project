@@ -2,6 +2,7 @@ import "./edit-profile.css"
 import {useContext} from "react";
 import {AuthContext} from "../../contexts/AuthContext";
 import {useForm} from "../../hooks/useForm";
+import {useNavigate} from "react-router-dom";
 
 
 const editFormKeys = {
@@ -15,6 +16,7 @@ const editFormKeys = {
 
 export const EditProfile = () => {
     const userData = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const initialValues = {
         [editFormKeys.Username]: userData.username,
@@ -23,6 +25,10 @@ export const EditProfile = () => {
         [editFormKeys.Email]: userData.email,
         [editFormKeys.Age]: userData?.age || '',
         [editFormKeys.Bio]: userData?.bio || '',
+    }
+
+    const onCancelHandler = () => {
+        navigate("/profile")
     }
 
     const {onSubmit, onChangeHandler, values} = useForm(
@@ -87,7 +93,10 @@ export const EditProfile = () => {
                     </textarea>
                 </div>
                 {/* Add more fields as needed */}
-                <button type="submit">Save</button>
+                <div className="button-container">
+                    <button type="submit">Save</button>
+                    <button type="button" className="red-button" onClick={onCancelHandler}>Cancel</button>
+                </div>
             </form>
         </div>
     );

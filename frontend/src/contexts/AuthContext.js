@@ -56,7 +56,18 @@ export const AuthProvider = ({children}) => {
 
             navigate('/profile');
         } catch (err) {
-            throw new Error()
+            throw new Error(err)
+        }
+    };
+
+    const onProfileDelete = async (userId) => {
+        try {
+            await authService.profileDelete(userId);
+            setAuth({});
+
+            navigate("/")
+        } catch (err) {
+            throw new Error(err)
         }
     };
 
@@ -65,6 +76,7 @@ export const AuthProvider = ({children}) => {
         onLoginSubmit,
         onLogoutSubmit,
         onProfileEdit,
+        onProfileDelete,
         token: auth?.access_token,
         userId: auth?.user?.id,
         email: auth?.user?.email,

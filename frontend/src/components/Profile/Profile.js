@@ -11,6 +11,10 @@ export const Profile = () => {
         navigate("/profile-edit")
     }
 
+    const openDeletePage = () => {
+        navigate("/profile-delete")
+    }
+
     return (
         <div className="profile">
             <div className="profile-picture">
@@ -25,7 +29,7 @@ export const Profile = () => {
                 {/* Add more profile information as needed */}
                 <div className="profile-actions">
                     <button className="edit-button" onClick={openEditPage}>Edit</button>
-                    <button className="delete-button">Delete</button>
+                    <button className="delete-button" onClick={openDeletePage}>Delete</button>
                 </div>
             </div>
         </div>

@@ -8,6 +8,7 @@ import {Login} from "./components/Login/Login";
 import {Logout} from "./components/Logout/Logout";
 import {Profile} from "./components/Profile/Profile";
 import {EditProfile} from "./components/EditProfile/EditProfile";
+import {DeleteProfile} from "./components/DeleteProfile/DeleteProfile";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     <Route path="/logout" element={<Logout/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/profile-edit" element={<EditProfile/>}/>
+                    <Route path="/profile-delete" element={<DeleteProfile/>}/>
                 </Routes>
             </main>
             <Footer/>

@@ -1,0 +1,46 @@
+.delete-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.delete-component h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.delete-component p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.button-group {
+  display: flex;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#cancel-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+#delete-btn {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+#cancel-btn:hover,
+#delete-btn:hover {
+  opacity: 0.8;
+}

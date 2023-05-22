@@ -38,3 +38,7 @@ export const profileEdit = async (data, userId) => {
   const response = await fetch(BASE_URL + `accounts/${userId}`, options);
   return await response.json();
 };
+
+export const profileDelete = async (userId) => {
+    await fetch(BASE_URL + `accounts/${userId}`, {method: "Delete"})
+}
