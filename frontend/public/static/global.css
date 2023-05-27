@@ -27,26 +27,72 @@ header {
 header h1 {
     font-size: 24px;
 }
-
-nav ul {
-    display: flex;
-    align-items: center;
-    list-style-type: none;
+.header-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
 }
 
-nav ul li + li {
-    margin-left: 20px;
+/*.title-menu-container {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  position: absolute;*/
+/*}*/
+
+.menu-button {
+  position: relative;
+  left: 1740px;
+  padding: 10px;
+  background-color: #f03a47;
+  width: 95px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-nav ul li a {
-    font-weight: bold;
-    transition: all 0.2s ease-in-out;
-    text-decoration: none;
-    color: black;
+.menu-button:hover {
+  background-color: #d32f3e;
 }
 
-nav ul li a:hover {
-    color: #f03a47;
+.menu-text {
+  font-weight: bold;
+}
+
+.navbar {
+  display: none;
+  position: absolute;
+  top: 72%;
+  right: 40px;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.visible {
+  display: block;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar ul li {
+  margin-bottom: 10px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #f03a47;
 }
 
 main {

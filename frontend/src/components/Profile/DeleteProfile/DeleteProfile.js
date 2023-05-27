@@ -1,7 +1,7 @@
 import "./delete-profile.css"
 import {useNavigate} from "react-router-dom";
 import {useContext} from "react";
-import {AuthContext} from "../../contexts/AuthContext";
+import {AuthContext} from "../../../contexts/AuthContext";
 
 export const DeleteProfile = () => {
     const {onProfileDelete, userId } = useContext(AuthContext)

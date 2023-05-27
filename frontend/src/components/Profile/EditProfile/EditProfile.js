@@ -1,7 +1,7 @@
 import "./edit-profile.css"
 import {useContext} from "react";
-import {AuthContext} from "../../contexts/AuthContext";
-import {useForm} from "../../hooks/useForm";
+import {AuthContext} from "../../../contexts/AuthContext";
+import {useForm} from "../../../hooks/useForm";
 import {useNavigate} from "react-router-dom";
 
 
