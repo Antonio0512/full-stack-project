@@ -31,7 +31,7 @@ export const Header = () => {
               <Link to={"/"}>Home</Link>
             </li>
             <li>
-              <Link to={"/catalogue"}>Catalogue</Link>
+              <Link to={"/song-catalog"}>Catalogue</Link>
             </li>
             {loggedIn && (
               <>

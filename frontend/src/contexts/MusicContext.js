@@ -18,7 +18,7 @@ export const MusicProvider = ({children}) => {
         try {
             const response = await musicService.addSong(songData);
             setSongs((prevSongs) => [...prevSongs, response]);
-            navigate('/catalogue')
+            navigate('/song-catalog')
         } catch (err) {
             throw new Error(err);
         }

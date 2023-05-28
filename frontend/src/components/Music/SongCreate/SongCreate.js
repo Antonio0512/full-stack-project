@@ -9,6 +9,7 @@ const SongAddKeys = {
     Duration: "duration",
     Genre: "genre",
     Is_favourite: "is_favourite",
+    Song_image_url: "song_image_url"
 }
 
 export const SongCreate = () => {
@@ -19,7 +20,8 @@ export const SongCreate = () => {
         [SongAddKeys.Artist]: "",
         [SongAddKeys.Duration]: "",
         [SongAddKeys.Genre]: "",
-        [SongAddKeys.Is_favourite]: false
+        [SongAddKeys.Is_favourite]: false,
+        [SongAddKeys.Song_image_url]: ""
     });
 
     return (
@@ -63,6 +65,16 @@ export const SongCreate = () => {
                         id="genre"
                         name="genre"
                         value={values[SongAddKeys.Genre]}
+                        onChange={onChangeHandler}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="song_image_url">Image url:</label>
+                    <input
+                        type="text"
+                        id="song_image_url"
+                        name="song_image_url"
+                        value={values[SongAddKeys.Song_image_url]}
                         onChange={onChangeHandler}
                     />
                 </div>

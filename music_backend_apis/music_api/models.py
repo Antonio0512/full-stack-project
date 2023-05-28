@@ -16,6 +16,7 @@ class Song(models.Model):
     artist = models.CharField(max_length=225)
     duration = models.FloatField(default=0)
     genre = models.CharField(max_length=225)
+    song_image_url = models.URLField(blank=True, null=True)
     likes = models.PositiveIntegerField(default=0)
     dislikes = models.PositiveIntegerField(default=0)
     is_favourite = models.BooleanField(default=False)
