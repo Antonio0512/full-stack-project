@@ -11,6 +11,7 @@ import {EditProfile} from "./components/Profile/EditProfile/EditProfile";
 import {DeleteProfile} from "./components/Profile/DeleteProfile/DeleteProfile";
 import {MusicProvider} from "./contexts/MusicContext";
 import {SongCreate} from "./components/Music/SongCreate/SongCreate";
+import {Catalog} from "./components/Catalog/Catalog"
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                         <Route path="/profile-edit" element={<EditProfile/>}/>
                         <Route path="/profile-delete" element={<DeleteProfile/>}/>
                         <Route path="/song-add" element={<SongCreate/>}/>
+                        <Route path="/catalog" element={<Catalog/>}/>
                     </Routes>
                 </main>
                 <Footer/>

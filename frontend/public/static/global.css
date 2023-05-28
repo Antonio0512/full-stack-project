@@ -12,87 +12,87 @@ body {
 }
 
 
-header {
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
     background-color: #fff;
-    padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 999;
+}
+
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
-header h1 {
+.header-container h1 {
     font-size: 24px;
 }
-.header-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 10px;
-}
-
-/*.title-menu-container {*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  position: absolute;*/
-/*}*/
 
 .menu-button {
-  position: relative;
-  left: 1740px;
-  padding: 10px;
-  background-color: #f03a47;
-  width: 95px;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    position: relative;
+    right: 40px;
+    padding: 10px;
+    background-color: #f03a47;
+    width: 95px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .menu-button:hover {
-  background-color: #d32f3e;
+    background-color: #d32f3e;
 }
 
 .menu-text {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .navbar {
-  display: none;
-  position: absolute;
-  top: 72%;
-  right: 40px;
-  text-align: center;
-  background-color: #ffffff;
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+    position: absolute;
+    top: 55px;
+    right: 50px;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar.visible {
-  display: block;
+    display: block;
 }
 
 .navbar ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .navbar ul li {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .navbar ul li a {
-  text-decoration: none;
-  color: black;
-  transition: color 0.3s ease;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
 }
 
 .navbar ul li a:hover {
-  color: #f03a47;
+    color: #f03a47;
 }
 
 main {
@@ -102,12 +102,12 @@ main {
 }
 
 footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 -5px 10px rgba(0,0,0,0.1);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }

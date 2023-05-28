@@ -8,7 +8,7 @@ const SongAddKeys = {
     Artist: "artist",
     Duration: "duration",
     Genre: "genre",
-    IsFavourite: "isFavourite",
+    Is_favourite: "is_favourite",
 }
 
 export const SongCreate = () => {
@@ -19,7 +19,7 @@ export const SongCreate = () => {
         [SongAddKeys.Artist]: "",
         [SongAddKeys.Duration]: "",
         [SongAddKeys.Genre]: "",
-        [SongAddKeys.IsFavourite]: false
+        [SongAddKeys.Is_favourite]: false
     });
 
     return (
@@ -67,19 +67,19 @@ export const SongCreate = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>
+                    <label>Is Favourite:</label>
+                    <div className="checkbox-container">
                         <input
                             type="checkbox"
                             name="isFavourite"
-                            checked={values[SongAddKeys.IsFavourite]}
+                            checked={values[SongAddKeys.Is_favourite]}
                             onChange={(e) =>
                                 onChangeHandler({
-                                    target: {name: 'isFavourite', value: e.target.checked}
+                                    target: {name: `${SongAddKeys.Is_favourite}`, value: e.target.checked}
                                 })
                             }
                         />
-                        Is Favourite
-                    </label>
+                    </div>
                 </div>
                 <button type="submit">Submit</button>
             </form>

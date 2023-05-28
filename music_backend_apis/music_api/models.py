@@ -14,9 +14,14 @@ class Album(models.Model):
 class Song(models.Model):
     title = models.CharField(max_length=225)
     artist = models.CharField(max_length=225)
-    duration = models.PositiveIntegerField()
+    duration = models.FloatField(default=0)
     genre = models.CharField(max_length=225)
     likes = models.PositiveIntegerField(default=0)
     dislikes = models.PositiveIntegerField(default=0)
     is_favourite = models.BooleanField(default=False)
-    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name="songs")
+    album = models.ForeignKey(Album,
+                              on_delete=models.CASCADE,
+                              related_name="songs",
+                              null=True,
+                              blank=True,
+                              default=None)

@@ -1,76 +1,64 @@
 .register-section {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #e9e9e9;
+  border-radius: 5px;
+}
+
+.register-section h2 {
   text-align: center;
 }
 
-.register-form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  justify-content: center;
-  max-width: 800px;
-  margin: 30px auto;
-}
-
-.form-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  margin-right: 10px;
-  font-weight: bold;
-  width: 120px;
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="password"],
-.form-group input[type="number"],
-.form-group input[type="url"],
-.form-group textarea {
-  flex: 1;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.form-group textarea {
-  resize: vertical;
-}
-
-.form-group.full-width {
-  grid-column: 1 / -1;
-}
-
-.register-button {
-  display: flex;
-  justify-content: center;
-  grid-column: 1 / -1;
-}
-
-.register-button button[type="submit"] {
-  background-color: #f03a47;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.register-button button[type="submit"]:hover {
-  background-color: #fff;
-  color: #f03a47;
-}
-
-.register-section p {
+.register-section .register-form {
   margin-top: 20px;
 }
 
+.register-section .form-group {
+  margin-bottom: 20px;
+}
+
+.register-section label {
+  /*position: relative;*/
+  /*right: 150px;*/
+  display: block;
+  font-weight: bold;
+}
+
+.register-section input[type="text"],
+.register-section input[type="email"],
+.register-section input[type="password"],
+.register-section input[type="number"],
+.register-section textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.register-section button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #2c7a4d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.register-section button[type="submit"]:hover {
+  background-color: #225f3d;
+}
+
+.register-section p {
+  text-align: center;
+}
+
 .register-section p a {
-  color: #f03a47;
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.register-section p a:hover {
+  text-decoration: underline;
 }
