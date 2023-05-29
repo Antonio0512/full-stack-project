@@ -7,18 +7,20 @@
 }
 
 .main-container h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
 .main-container form {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.main-container .form-group {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-}
+/*.main-container .form-group {*/
+/*    margin-bottom: 20px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
 
 .main-container label {
     position: relative;
@@ -51,9 +53,9 @@
     background-color: #225f3d;
 }
 
-.main-container label input[type="checkbox"] {
-    margin-right: 5px;
-}
+/*.main-container label input[type="checkbox"] {*/
+/*    margin-left: 8px;*/
+/*}*/
 
 .main-container .form-group label {
     margin-right: 10px;
@@ -79,4 +81,43 @@
 
 .main-container p a:hover {
     text-decoration: underline;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons-container button,
+.buttons-container .button-cancel {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px;
+  margin-left: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttons-container button[type="submit"] {
+  background-color: #2c7a4d;
+}
+
+.buttons-container .button-cancel {
+  background-color: #ff0000;
+
+}
+
+.buttons-container button[type="submit"]:hover,
+.buttons-container .button-cancel:hover {
+  background-color: #225f3d;
+}
+
+.buttons-container .button-cancel:hover {
+  background-color: #d32f3e;
 }

@@ -1,33 +1,36 @@
-import "./song-create.css"
 import React, {useContext} from "react";
-import {useForm} from "../../../hooks/useForm"
+import {useForm} from "../../../hooks/useForm";
 import {MusicContext} from "../../../contexts/MusicContext";
-import {Link} from "react-router-dom";
+import "./song-edit.css";
+import {Link, useParams} from "react-router-dom";
 
-const SongAddKeys = {
+const SongEditKeys = {
     Title: "title",
     Artist: "artist",
     Duration: "duration",
     Genre: "genre",
     Is_favourite: "is_favourite",
-    Song_image_url: "song_image_url"
-}
-
-export const SongCreate = () => {
-    const {addSong} = useContext(MusicContext)
-
-    const {values, onChangeHandler, onSubmit} = useForm(() => addSong(values), {
-        [SongAddKeys.Title]: "",
-        [SongAddKeys.Artist]: "",
-        [SongAddKeys.Duration]: "",
-        [SongAddKeys.Genre]: "",
-        [SongAddKeys.Is_favourite]: false,
-        [SongAddKeys.Song_image_url]: ""
-    });
+    Song_image_url: "song_image_url",
+};
+export const SongEdit = () => {
+    const {editSong, songs} = useContext(MusicContext);
+    const {songId} = useParams();
+    const song = songs.find((s) => s.id === Number(songId));
+    const {values, onChangeHandler, onSubmit} = useForm(
+        () => editSong(songId, values),
+        {
+            [SongEditKeys.Title]: song.title,
+            [SongEditKeys.Artist]: song.artist,
+            [SongEditKeys.Duration]: song.duration,
+            [SongEditKeys.Genre]: song.genre,
+            [SongEditKeys.Is_favourite]: song.is_favourite,
+            [SongEditKeys.Song_image_url]: song.song_image_url,
+        }
+    );
 
     return (
-        <div className="main-container">
-            <h2>Add song</h2>
+        <div className="song-edit-container">
+            <h2>Edit Song</h2>
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="title">Title:</label>
@@ -35,7 +38,7 @@ export const SongCreate = () => {
                         type="text"
                         id="title"
                         name="title"
-                        value={values[SongAddKeys.Title]}
+                        value={values[SongEditKeys.Title]}
                         onChange={onChangeHandler}
                     />
                 </div>
@@ -45,7 +48,7 @@ export const SongCreate = () => {
                         type="text"
                         id="artist"
                         name="artist"
-                        value={values[SongAddKeys.Artist]}
+                        value={values[SongEditKeys.Artist]}
                         onChange={onChangeHandler}
                     />
                 </div>
@@ -55,7 +58,7 @@ export const SongCreate = () => {
                         type="number"
                         id="duration"
                         name="duration"
-                        value={values[SongAddKeys.Duration]}
+                        value={values[SongEditKeys.Duration]}
                         onChange={onChangeHandler}
                     />
                 </div>
@@ -65,7 +68,7 @@ export const SongCreate = () => {
                         type="text"
                         id="genre"
                         name="genre"
-                        value={values[SongAddKeys.Genre]}
+                        value={values[SongEditKeys.Genre]}
                         onChange={onChangeHandler}
                     />
                 </div>
@@ -75,7 +78,7 @@ export const SongCreate = () => {
                         type="text"
                         id="song_image_url"
                         name="song_image_url"
-                        value={values[SongAddKeys.Song_image_url]}
+                        value={values[SongEditKeys.Song_image_url]}
                         onChange={onChangeHandler}
                     />
                 </div>
@@ -85,21 +88,23 @@ export const SongCreate = () => {
                         <input
                             type="checkbox"
                             name="isFavourite"
-                            checked={values[SongAddKeys.Is_favourite]}
+                            checked={values[SongEditKeys.Is_favourite]}
                             onChange={(e) =>
                                 onChangeHandler({
-                                    target: {name: `${SongAddKeys.Is_favourite}`, value: e.target.checked}
+                                    target: {
+                                        name: `${SongEditKeys.Is_favourite}`,
+                                        value: e.target.checked,
+                                    },
                                 })
                             }
                         />
                     </div>
                 </div>
                 <div className="buttons-container">
-                    <button type="submit">Submit</button>
+                    <button type="submit">Edit</button>
                     <Link to="/song-catalog" className="button-cancel">Cancel</Link>
                 </div>
             </form>
         </div>
-
     );
-};
+}

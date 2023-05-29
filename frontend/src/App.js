@@ -12,6 +12,7 @@ import {DeleteProfile} from "./components/Profile/DeleteProfile/DeleteProfile";
 import {MusicProvider} from "./contexts/MusicContext";
 import {SongCreate} from "./components/Music/SongCreate/SongCreate";
 import {SongCatalog} from "./components/Music/SongCatalog/SongCatalog"
+import {SongEdit} from "./components/Music/SongEdit/SongEdit";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                         <Route path="/profile-delete" element={<DeleteProfile/>}/>
                         <Route path="/song-add" element={<SongCreate/>}/>
                         <Route path="/song-catalog" element={<SongCatalog/>}/>
+                        <Route path="/song-catalog/song-edit/:songId" element={<SongEdit/>}/>
                     </Routes>
                 </main>
                 <Footer/>

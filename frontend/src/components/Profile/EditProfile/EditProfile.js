@@ -92,7 +92,6 @@ export const EditProfile = () => {
                         onChange={onChangeHandler}>
                     </textarea>
                 </div>
-                {/* Add more fields as needed */}
                 <div className="button-container">
                     <button type="submit">Save</button>
                     <button type="button" className="red-button" onClick={onCancelHandler}>Cancel</button>

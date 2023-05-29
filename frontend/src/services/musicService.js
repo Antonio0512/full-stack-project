@@ -21,4 +21,15 @@ export const addSong = async (data) => {
 
 export const deleteSong = async () => {}
 
-export const updateSong = async () => {}
+export const editSong = async (songId, data) => {
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    };
+
+    const response = await fetch(BASE_URL + songId, options);
+    return await response.json();
+};

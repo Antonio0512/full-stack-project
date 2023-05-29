@@ -33,9 +33,9 @@ export const MusicProvider = ({children}) => {
         }
     };
 
-    const updateSong = async (songId, songData) => {
+    const editSong = async (songId, songData) => {
         try {
-            const response = await musicService.updateSong(songId, songData);
+            const response = await musicService.editSong(songId, songData);
             setSongs((prevSongs) =>
                 prevSongs.map((song) => (song.id === songId ? response : song))
             );
@@ -48,9 +48,8 @@ export const MusicProvider = ({children}) => {
         songs,
         addSong,
         deleteSong,
-        updateSong,
+        editSong,
     };
-
     return (
         <MusicContext.Provider value={musicContextData}>
             {children}
