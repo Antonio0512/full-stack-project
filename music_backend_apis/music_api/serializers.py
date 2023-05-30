@@ -8,5 +8,6 @@ class SongSerializer(serializers.ModelSerializer):
         model = models.Song
         fields = ('id', 'title', 'artist',
                   'duration', 'genre', 'likes',
-                  'dislikes', 'is_favourite', 'song_image_url', 'album')
+                  'dislikes', 'is_favourite', 'song_image_url',
+                  'album', 'creator_id')
         read_only_fields = ('id',)

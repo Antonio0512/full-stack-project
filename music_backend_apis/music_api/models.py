@@ -1,4 +1,7 @@
+from django.contrib.auth import get_user_model
 from django.db import models
+
+User = get_user_model()
 
 
 class Album(models.Model):
@@ -12,6 +15,7 @@ class Album(models.Model):
 
 
 class Song(models.Model):
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=225)
     artist = models.CharField(max_length=225)
     duration = models.FloatField(default=0)

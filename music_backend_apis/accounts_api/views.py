@@ -6,6 +6,7 @@ from rest_framework import views, status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from . import models
@@ -45,7 +46,7 @@ class ProfilesApiView(views.APIView):
 
 class ProfilesDetailsApiView(views.APIView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsOwnerOrReadOnly,)
+    permission_classes = (IsOwnerOrReadOnly, IsAuthenticated)
 
     def get(self, req, id):
         user = models.UserProfile.objects.get(pk=id)
