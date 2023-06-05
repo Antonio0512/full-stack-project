@@ -1,46 +1,32 @@
-import "./song-edit.css";
+import "./song-delete.css";
 import React, {useContext} from "react";
-import {useForm} from "../../../hooks/useForm";
 import {MusicContext} from "../../../contexts/MusicContext";
 import {Link, useParams} from "react-router-dom";
 
-const SongEditKeys = {
-    Title: "title",
-    Artist: "artist",
-    Duration: "duration",
-    Genre: "genre",
-    Is_favourite: "is_favourite",
-    Song_image_url: "song_image_url",
-};
-export const SongEdit = () => {
-    const {editSong, songs} = useContext(MusicContext);
+
+export const SongDelete = () => {
+    const {songs, deleteSong} = useContext(MusicContext);
     const {songId} = useParams();
     const song = songs.find((s) => s.id === Number(songId));
 
-    const {values, onChangeHandler, onSubmit} = useForm(
-        () => editSong(songId, values), {
-            [SongEditKeys.Title]: song?.title || "",
-            [SongEditKeys.Artist]: song?.artist || "",
-            [SongEditKeys.Duration]: song?.duration || "",
-            [SongEditKeys.Genre]: song?.genre || "",
-            [SongEditKeys.Is_favourite]: song?.is_favourite || "",
-            [SongEditKeys.Song_image_url]: song?.song_image_url || ""
-        }
-    );
+    const onDeleteHandler = async (e) => {
+        e.preventDefault();
 
+        await deleteSong(songId);
+    };
 
     return (
-        <div className="song-edit-container">
-            <h2>Edit Song</h2>
-            <form onSubmit={onSubmit}>
+        <div className="song-delete-container">
+            <h2>Delete Song</h2>
+            <form>
                 <div className="form-group">
                     <label htmlFor="title">Title:</label>
                     <input
                         type="text"
                         id="title"
                         name="title"
-                        value={values[SongEditKeys.Title]}
-                        onChange={onChangeHandler}
+                        value={song?.title || ""}
+                        readOnly
                     />
                 </div>
                 <div className="form-group">
@@ -49,8 +35,8 @@ export const SongEdit = () => {
                         type="text"
                         id="artist"
                         name="artist"
-                        value={values[SongEditKeys.Artist]}
-                        onChange={onChangeHandler}
+                        value={song?.artist || ""}
+                        readOnly
                     />
                 </div>
                 <div className="form-group">
@@ -59,8 +45,8 @@ export const SongEdit = () => {
                         type="number"
                         id="duration"
                         name="duration"
-                        value={values[SongEditKeys.Duration]}
-                        onChange={onChangeHandler}
+                        value={song?.duration || ""}
+                        readOnly
                     />
                 </div>
                 <div className="form-group">
@@ -69,8 +55,8 @@ export const SongEdit = () => {
                         type="text"
                         id="genre"
                         name="genre"
-                        value={values[SongEditKeys.Genre]}
-                        onChange={onChangeHandler}
+                        value={song?.genre || ""}
+                        readOnly
                     />
                 </div>
                 <div className="form-group">
@@ -79,8 +65,8 @@ export const SongEdit = () => {
                         type="text"
                         id="song_image_url"
                         name="song_image_url"
-                        value={values[SongEditKeys.Song_image_url]}
-                        onChange={onChangeHandler}
+                        value={song?.song_image_url || ""}
+                        readOnly
                     />
                 </div>
                 <div className="form-group">
@@ -89,23 +75,16 @@ export const SongEdit = () => {
                         <input
                             type="checkbox"
                             name="isFavourite"
-                            checked={values[SongEditKeys.Is_favourite]}
-                            onChange={(e) =>
-                                onChangeHandler({
-                                    target: {
-                                        name: `${SongEditKeys.Is_favourite}`,
-                                        value: e.target.checked,
-                                    },
-                                })
-                            }
+                            checked={song?.is_favourite || false}
+                            disabled
                         />
                     </div>
                 </div>
                 <div className="buttons-container">
-                    <button type="submit">Edit</button>
+                    <button type={"submit"} onClick={onDeleteHandler}>Delete</button>
                     <Link to="/song-catalog" className="button-cancel">Cancel</Link>
                 </div>
             </form>
         </div>
     );
-}
+};

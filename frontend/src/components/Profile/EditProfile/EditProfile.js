@@ -93,7 +93,7 @@ export const EditProfile = () => {
                     </textarea>
                 </div>
                 <div className="button-container">
-                    <button type="submit">Save</button>
+                    <button type="submit">Edit</button>
                     <button type="button" className="red-button" onClick={onCancelHandler}>Cancel</button>
                 </div>
             </form>

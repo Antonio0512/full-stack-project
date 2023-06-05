@@ -4,9 +4,12 @@ export const useForm = (onSubmitHandler, initialValues = {}) => {
     const [values, setValues] = useState(initialValues);
 
     const onChangeHandler = (e) => {
-        const {name, value} = e.target;
+        const {name, value, type, checked} = e.target;
+
+        const newValue = type === 'checkbox' ? checked : value;
+
         setValues(
-            state => ({...state, [name]: value})
+            state => ({...state, [name]: newValue})
         );
     };
 

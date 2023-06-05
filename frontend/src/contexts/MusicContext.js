@@ -11,7 +11,7 @@ export const MusicProvider = ({children}) => {
     useEffect(() => {
         musicService.getAllSongs().then((result) => {
             setSongs(result);
-        })
+        });
     }, []);
 
     const addSong = async (songData) => {
@@ -27,9 +27,10 @@ export const MusicProvider = ({children}) => {
     const deleteSong = async (songId) => {
         try {
             await musicService.deleteSong(songId);
-            setSongs((prevSongs) => prevSongs.filter((song) => song.id !== songId));
+            setSongs((prevSongs) => prevSongs.filter((song) => song.id !== Number(songId)));
+            navigate('/song-catalog');
         } catch (err) {
-            console.error("Error deleting song:", err);
+            throw new Error(err);
         }
     };
 
@@ -37,10 +38,11 @@ export const MusicProvider = ({children}) => {
         try {
             const response = await musicService.editSong(songId, songData);
             setSongs((prevSongs) =>
-                prevSongs.map((song) => (song.id === songId ? response : song))
+                prevSongs.map((song) => (song.id === Number(songId) ? response : song))
             );
+            navigate(`/song-catalog/song-details/${Number(songId)}`);
         } catch (err) {
-            console.error("Error updating song:", err);
+            throw new Error(err)
         }
     };
 

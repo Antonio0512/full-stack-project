@@ -14,7 +14,22 @@ export const getAllSongs = async () => {
 
     const response = await fetch(BASE_URL, options);
     return await response.json();
-}
+};
+
+export const getOneSong = async (songId) => {
+    const token = authData.access_token;
+
+    const options = {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${token}`
+        }
+    };
+
+    const response = await fetch(BASE_URL + songId, options);
+    return await response.json();
+};
 
 export const addSong = async (data) => {
     const token = authData.access_token
@@ -30,7 +45,7 @@ export const addSong = async (data) => {
 
     const response = await fetch(BASE_URL, options);
     return await response.json()
-}
+};
 
 export const deleteSong = async (songId) => {
     const token = authData.access_token;
@@ -42,8 +57,8 @@ export const deleteSong = async (songId) => {
             Authorization: `Token ${token}`,
         },
     };
-    await fetch(BASE_URL + songId, options)
-}
+    await fetch(BASE_URL + songId, options);
+};
 
 export const editSong = async (songId, data) => {
     const token = authData.access_token;

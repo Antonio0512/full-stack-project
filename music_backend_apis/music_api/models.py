@@ -20,13 +20,44 @@ class Song(models.Model):
     artist = models.CharField(max_length=225)
     duration = models.FloatField(default=0)
     genre = models.CharField(max_length=225)
-    song_image_url = models.URLField(blank=True, null=True)
-    likes = models.PositiveIntegerField(default=0)
-    dislikes = models.PositiveIntegerField(default=0)
     is_favourite = models.BooleanField(default=False)
-    album = models.ForeignKey(Album,
-                              on_delete=models.CASCADE,
-                              related_name="songs",
-                              null=True,
-                              blank=True,
-                              default=None)
+    song_image_url = models.URLField(blank=True, null=True)
+    album = models.ForeignKey(
+        Album,
+        on_delete=models.CASCADE,
+        related_name="songs",
+        null=True,
+        blank=True,
+        default=None
+    )
+
+    def __str__(self):
+        return self.title
+
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    song = models.ForeignKey(Song, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ["user", "song"]
+
+
+class Dislike(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    song = models.ForeignKey(Song, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ["user", "song"]
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name="comments")
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.email} - {self.song.title}"

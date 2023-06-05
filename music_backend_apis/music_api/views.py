@@ -37,7 +37,13 @@ class SongDetailsApiView(views.APIView):
         song = self.get_song(id)
         if song:
             serializer = serializers.SongSerializer(song)
-            return Response(serializer.data)
+            response_data = serializer.data
+
+            # Add likes and dislikes count to the response data
+            response_data['likes_count'] = song.likes.count()
+            response_data['dislikes_count'] = song.dislikes.count()
+
+            return Response(response_data)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, id):
