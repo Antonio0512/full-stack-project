@@ -1,0 +1,34 @@
+# Django related files
+*.pyc
+__pycache__/
+*.sqlite3
+*.log
+
+# Secret key
+*.key
+
+# Media and static files
+/media/
+/static/
+
+# Environment variables
+.env
+
+# Dependency directories
+venv/
+.env/
+
+# IDE or editor specific files
+.vscode/
+.idea/
+
+# Compiled files or binaries
+*.pyo
+*.pyd
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Miscellaneous
+.DS_Store
