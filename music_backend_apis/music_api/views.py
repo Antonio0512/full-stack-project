@@ -1,5 +1,5 @@
 from rest_framework import views, status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
 from . import models
@@ -8,7 +8,7 @@ from .permissions import IsOwnerOrReadOnly
 
 
 class SongListApiView(views.APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get(self, request):
         songs = models.Song.objects.all()
