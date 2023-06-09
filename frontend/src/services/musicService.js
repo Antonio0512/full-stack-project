@@ -2,13 +2,13 @@ const BASE_URL = "http://127.0.0.1:8000/api/music/songs/"
 const authData = JSON.parse(localStorage.auth);
 
 export const getAllSongs = async () => {
-    const token = authData.access_token
+    // const token = authData.access_token
 
     const options = {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Token ${token}`
+            // Authorization: `Token ${token}`
         }
     };
 
