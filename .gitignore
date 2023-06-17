@@ -29,7 +29,6 @@ venv/
 *.dll
 *.so
 *.dylib
-*.tfvars
 
 # Miscellaneous
 .DS_Store
