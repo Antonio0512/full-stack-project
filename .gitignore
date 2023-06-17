@@ -32,3 +32,5 @@ venv/
 
 # Miscellaneous
 .DS_Store
+
+terraform
