@@ -49,11 +49,11 @@ resource "azurerm_linux_web_app" "appservice" {
     name  = "DefaultConnection"
     type  = "SQLAzure"
     value = <<CONNECTION_STRING
-	  Host=${azurerm_postgresql_server.postgresql.fully_qualified_domain_name};
+	  Host=${azurerm_postgresql_server.postgresserver.fqdn}
       Port=5432;
-      Database=${azurerm_postgresql_database.postgresqldb.name};
-      Username=${azurerm_postgresql_server.postgresql.admin_username};
-      Password=${azurerm_postgresql_server.postgresql.admin_password};
+      Database=${azurerm_postgresql_database.postgresdb.name};
+      Username=${azurerm_postgresql_server.postgresserver.administrator_login}
+      Password=${azurerm_postgresql_server.postgresserver.administrator_login_password}
       SSL Mode=Require;
 CONNECTION_STRING
   }
@@ -75,11 +75,13 @@ resource "azurerm_postgresql_server" "postgresserver" {
   version                      = "9.5"
   administrator_login          = var.sql_admin_login
   administrator_login_password = var.sql_admin_password
+  sku_name                     = "B_Gen5_2"
+  ssl_enforcement_enabled      = true
 }
 
 # Create a database
-resource "azurerm_postgresql_database" "sqldatabase" {
-  name           = "${var.sql_database_name}${random_integer.ri.result}"
+resource "azurerm_postgresql_database" "postgresdb" {
+  name                = "${var.sql_database_name}${random_integer.ri.result}"
   resource_group_name = azurerm_resource_group.rg.name
   server_name         = azurerm_postgresql_server.postgresserver.name
   charset             = "UTF8"
