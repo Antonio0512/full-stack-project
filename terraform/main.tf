@@ -49,11 +49,11 @@ resource "azurerm_linux_web_app" "appservice" {
     name  = "DefaultConnection"
     type  = "SQLAzure"
     value = <<CONNECTION_STRING
-	  Host=${azurerm_postgresql_server.postgresserver.fqdn}
+	  Host=db
       Port=5432;
-      Database=${azurerm_postgresql_database.postgresdb.name};
-      Username=${azurerm_postgresql_server.postgresserver.administrator_login}
-      Password=${azurerm_postgresql_server.postgresserver.administrator_login_password}
+      Database=music_db;
+      Username=toni;
+      Password=toni1234;
       SSL Mode=Require;
 CONNECTION_STRING
   }
