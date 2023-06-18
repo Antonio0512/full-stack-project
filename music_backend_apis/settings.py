@@ -14,7 +14,7 @@ SECRET_KEY = "django-insecure-tm_bc8b)0qlxcbt89#hdrd5$j6+*(&3hlf7k*#y87b!i8^_lq!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['music-app-69601.azurewebsites.net']
+ALLOWED_HOSTS = ['music-app-toni.azurewebsites.net']
 
 # Application definition
 
