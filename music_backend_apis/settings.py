@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = django-insecure-tm_bc8b)0qlxcbt89#hdrd5$j6+*(&3hlf7k*#y87b!i8^_lq!
 
 ALLOWED_HOSTS = []
 
