@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-tm_bc8b)0qlxcbt89#hdrd5$j6+*(&3hlf7k*#y87b!i8^_lq!"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -85,11 +85,11 @@ WSGI_APPLICATION = 'music_backend_apis.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('NAME'),
-        'USER': config('USER'),
-        'PASSWORD': config('PASSWORD'),
-        'HOST': config('HOST'),
-        'PORT': config('PORT'),
+        'NAME': 'music_db',
+        'USER': 'toni',
+        'PASSWORD': 'toni1234',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
