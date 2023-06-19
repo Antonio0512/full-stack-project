@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: backend
+    image: musiccr.azurecr.io/backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    command: bash -c "sleep 5 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    restart: on-failure
+
+  frontend:
+    container_name: frontend
+    image: musiccr.azurecr.io/frontend
+    ports:
+      - "3000:3000"
+    restart: on-failure
+
+  db:
+    container_name: postgres
+    image: postgres:latest
+    ports:
+      - "1433:1433"
+    deploy:
+      resources:
+        reservations:
+          cpus: '1'
+          memory: 1GB
+    environment:
+      - POSTGRES_USER=toni
+      - POSTGRES_PASSWORD=toni1234
+      - POSTGRES_DB=music_db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
+    driver: azure_file
+    driver_opts:
+      share_name: postgres
+      storage_account_name: musiccr
+

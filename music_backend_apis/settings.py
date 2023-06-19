@@ -9,12 +9,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-tm_bc8b)0qlxcbt89#hdrd5$j6+*(&3hlf7k*#y87b!i8^_lq!"
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['music-app-toni.azurewebsites.net']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -85,11 +85,11 @@ WSGI_APPLICATION = 'music_backend_apis.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'music_db',
-        'USER': 'toni',
-        'PASSWORD': 'toni1234',
-        'HOST': 'db',
-        'PORT': '5432',
+        'NAME': config('NAME'),
+        'USER': config('USER'),
+        'PASSWORD': config('PASSWORD'),
+        'HOST': config('HOST'),
+        'PORT': config('PORT'),
     }
 }
 
