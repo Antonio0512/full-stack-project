@@ -2,6 +2,7 @@ import "./register.css"
 import React, { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
 import { AuthContext } from "../../contexts/AuthContext";
+import {Link} from "react-router-dom";
 
 const registerFormKeys = {
   Username: "username",
@@ -139,7 +140,7 @@ export const Register = () => {
           <button type="submit">Register</button>
         </div>
       </form>
-      <p>Already have an account? <a href="/login">Login</a></p>
+      <p>Already have an account? <Link to={"/login"}>Login</Link></p>
     </section>
   );
 };

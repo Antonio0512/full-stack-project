@@ -1,58 +1,55 @@
-const BASE_URL = 'http://127.0.0.1:8000/api/accounts/'
-const authData = JSON.parse(localStorage.auth);
+import axios from "axios";
+
+const authBaseUrl = 'http://127.0.0.1:8000/api/accounts/';
 
 export const register = async (data) => {
-    const options = {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-    };
-
-    const response = await fetch(BASE_URL, options);
-    return await response.json();
+  try {
+    const response = await axios.post(authBaseUrl, data, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const login = async (data) => {
-    const options = {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-    };
-
-    const response = await fetch(BASE_URL + "login/", options);
-    return await response.json();
+  try {
+    const response = await axios.post(authBaseUrl + 'login/', data, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
-export const profileEdit = async (data, userId) => {
-    const token = authData.access_token;
-
-    const options = {
-        method: 'PUT',
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Token ${token}`
-        },
-        body: JSON.stringify(data),
-    };
-
-    const response = await fetch(BASE_URL + userId, options);
-    return await response.json();
+export const profileEdit = async (data, userId, authToken) => {
+  try {
+    const response = await axios.put(authBaseUrl + userId, data, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Token ${authToken}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
-export const profileDelete = async (userId) => {
-    const token = authData.access_token
-
-    const options = {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Token ${token}`,
-        },
-    };
-
-    await fetch(BASE_URL + userId, options)
+export const profileDelete = async (userId, authToken) => {
+  try {
+    await axios.delete(authBaseUrl + userId, {
+      headers: {
+        "Authorization": `Token ${authToken}`
+      }
+    });
+  } catch (error) {
+    throw error;
+  }
 };

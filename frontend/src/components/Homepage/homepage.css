@@ -1,52 +1,50 @@
-
 .hero {
-    background-image: url('https://example.com/hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    text-align: center;
-    padding: 100px 0;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  padding: 100px 0;
 }
 
 .hero h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    color: darkgray;
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: black;
 }
 
 .hero p {
-    font-size: 24px;
-    margin-bottom: 40px;
-    color: darkgray;
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: black;
 }
 
 .features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 50px;
 }
 
 .feature {
-    width: calc(33.33% - 20px);
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
+  width: calc(33.33% - 20px);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
 }
 
 .feature img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 20px;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
 }
 
 .feature h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
 .feature p {
-    font-size: 16px;
-    line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.4;
 }

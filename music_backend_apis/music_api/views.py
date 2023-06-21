@@ -24,30 +24,26 @@ class SongListApiView(views.APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+def get_song(id):
+    try:
+        return models.Song.objects.get(pk=id)
+    except models.Song.DoesNotExist:
+        return None
+
+
 class SongDetailsApiView(views.APIView):
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
-    def get_song(self, id):
-        try:
-            return models.Song.objects.get(pk=id)
-        except models.Song.DoesNotExist:
-            return None
-
     def get(self, request, id):
-        song = self.get_song(id)
+        song = get_song(id)
         if song:
             serializer = serializers.SongSerializer(song)
             response_data = serializer.data
-
-            # Add likes and dislikes count to the response data
-            response_data['likes_count'] = song.likes.count()
-            response_data['dislikes_count'] = song.dislikes.count()
-
             return Response(response_data)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     def put(self, request, id):
-        song = self.get_song(id)
+        song = get_song(id)
         if song:
             serializer = serializers.SongSerializer(song, data=request.data)
             if serializer.is_valid():
@@ -57,7 +53,7 @@ class SongDetailsApiView(views.APIView):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     def delete(self, request, id):
-        song = self.get_song(id)
+        song = get_song(id)
         if song:
             song.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)

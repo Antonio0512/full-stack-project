@@ -51,6 +51,7 @@ export const MusicProvider = ({children}) => {
         addSong,
         deleteSong,
         editSong,
+        setSongs
     };
     return (
         <MusicContext.Provider value={musicContextData}>

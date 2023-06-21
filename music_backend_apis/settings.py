@@ -31,6 +31,7 @@ INSTALLED_APPS = [
 
     'music_backend_apis.accounts_api',
     'music_backend_apis.music_api',
+    'music_backend_apis.common'
 ]
 
 MIDDLEWARE = [

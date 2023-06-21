@@ -2,6 +2,7 @@ import "./login.css";
 import { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
 import { AuthContext } from "../../contexts/AuthContext";
+import {Link} from "react-router-dom";
 
 const loginFormKeys = {
   Email: "email",
@@ -50,7 +51,7 @@ export const Login = () => {
         </div>
       </form>
       <p>
-        Don't have an account? <a href="/login">login</a>
+          Don't have an account? <Link to="/register">Register </Link>
       </p>
     </section>
   );
