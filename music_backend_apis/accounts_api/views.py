@@ -1,6 +1,7 @@
 import json
 
 from django.contrib.auth import authenticate
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import views, status
 
 from rest_framework.authentication import TokenAuthentication
@@ -49,12 +50,20 @@ class ProfilesDetailsApiView(views.APIView):
     permission_classes = (IsOwnerOrReadOnly, IsAuthenticated)
 
     def get(self, req, id):
-        user = models.UserProfile.objects.get(pk=id)
+        try:
+            user = models.UserProfile.objects.get(pk=id)
+        except ObjectDoesNotExist:
+            return Response({'detail': 'User profile not found.'}, status=status.HTTP_404_NOT_FOUND)
+
         serializer = serializers.ProfilesSerializer(user)
         return Response({'user': serializer.data})
 
     def put(self, request, id):
-        user = models.UserProfile.objects.get(pk=id)
+        try:
+            user = models.UserProfile.objects.get(pk=id)
+        except ObjectDoesNotExist:
+            return Response({'detail': 'User profile not found.'}, status=status.HTTP_404_NOT_FOUND)
+
         serializer = serializers.ProfilesSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
@@ -81,11 +90,14 @@ class ProfilesDetailsApiView(views.APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id):
-        user = models.UserProfile.objects.get(pk=id)
-        token = Token.objects.get(user=user)
-        access_token = token.key
+        try:
+            user = models.UserProfile.objects.get(pk=id)
+        except models.UserProfile.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
-        access_token.delete()
+        token = Token.objects.get(user=user)
+
+        token.delete()
         user.delete()
         return Response(status=status.HTTP_200_OK)
 

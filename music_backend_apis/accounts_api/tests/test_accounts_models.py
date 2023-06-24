@@ -76,5 +76,3 @@ class UserProfileModelTest(TestCase):
                 username=username,
                 password='testpassword2'
             )
-
-    # Add more test cases to cover other validators and model methods...
