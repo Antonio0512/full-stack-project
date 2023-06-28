@@ -32,14 +32,14 @@ function App() {
 
                         {/* Protected routes */}
                         <Route element={<RouteGuard/>}>
-                            <Route path="/profile" element={<Profile/>}/>
-                            <Route path="/profile-edit" element={<EditProfile/>}/>
-                            <Route path="/profile-delete" element={<DeleteProfile/>}/>
-                            <Route path="/song-add" element={<SongCreate/>}/>
-                            <Route path="/song-catalog" element={<SongCatalog/>}/>
-                            <Route path="/song-catalog/song-details/:songId" element={<SongDetails/>}/>
-                            <Route path="/song-catalog/song-edit/:songId" element={<SongEdit/>}/>
-                            <Route path="/song-catalog/song-delete/:songId" element={<SongDelete/>}/>
+                            <Route path="/profile/" element={<Profile/>}/>
+                            <Route path="/profile-edit/" element={<EditProfile/>}/>
+                            <Route path="/profile-delete/" element={<DeleteProfile/>}/>
+                            <Route path="/song-add/" element={<SongCreate/>}/>
+                            <Route path="/song-catalog/" element={<SongCatalog/>}/>
+                            <Route path="/song-catalog/song-details/:songId/" element={<SongDetails/>}/>
+                            <Route path="/song-catalog/song-edit/:songId/" element={<SongEdit/>}/>
+                            <Route path="/song-catalog/song-delete/:songId/" element={<SongDelete/>}/>
                         </Route>
                     </Routes>
                 </main>

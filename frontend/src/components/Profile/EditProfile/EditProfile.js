@@ -7,8 +7,8 @@ import {useNavigate} from "react-router-dom";
 
 const editFormKeys = {
     Username: "username",
-    FirstName: "firstName",
-    LastName: "lastName",
+    FirstName: "first_name",
+    LastName: "last_name",
     Email: "email",
     Age: "age",
     Bio: "bio",
@@ -19,10 +19,10 @@ export const EditProfile = () => {
     const navigate = useNavigate()
 
     const initialValues = {
-        [editFormKeys.Username]: userData.username,
-        [editFormKeys.FirstName]: userData.firstName,
-        [editFormKeys.LastName]: userData.lastName,
-        [editFormKeys.Email]: userData.email,
+        [editFormKeys.Username]: userData?.username,
+        [editFormKeys.FirstName]: userData?.first_name,
+        [editFormKeys.LastName]: userData?.last_name,
+        [editFormKeys.Email]: userData?.email,
         [editFormKeys.Age]: userData?.age || '',
         [editFormKeys.Bio]: userData?.bio || '',
     }
@@ -52,7 +52,7 @@ export const EditProfile = () => {
                     <label>First Name:</label>
                     <input
                         type="text"
-                        name="firstName"
+                        name="first_name"
                         value={values[editFormKeys.FirstName]}
                         onChange={onChangeHandler}
                     />
@@ -61,7 +61,7 @@ export const EditProfile = () => {
                     <label>Last Name:</label>
                     <input
                         type="text"
-                        name="lastName"
+                        name="last_name"
                         value={values[editFormKeys.LastName]}
                         onChange={onChangeHandler}
                     />

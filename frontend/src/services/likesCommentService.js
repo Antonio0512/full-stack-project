@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'http://127.0.0.1:8000/api/music/songs/';
 const authData = JSON.parse(localStorage.auth);
 
-export const getLikes = async (songId) => {
+export const getLikesAndDislikes = async (songId) => {
     try {
         const headers = {
             'Authorization': `Token ${authData.access_token}`
@@ -31,20 +31,6 @@ export const postLikes = async (songId) => {
     }
 };
 
-export const getDislikes = async (songId) => {
-    try {
-        const headers = {
-            'Authorization': `Token ${authData.access_token}`
-        };
-
-        const response = await axios.get(`${BASE_URL}${songId}/dislike/`, {headers});
-        return response.data;
-    } catch (error) {
-        console.log("Failed to get dislikes count:", error);
-        return null;
-    }
-};
-
 export const postDislikes = async (songId) => {
     try {
         const headers = {
@@ -58,3 +44,28 @@ export const postDislikes = async (songId) => {
         return null;
     }
 };
+
+export const getComments = async (songId) => {
+    try {
+        const response = await axios.get(`${BASE_URL}${songId}/comments/`);
+        return response.data;
+    } catch (error) {
+        throw new Error('Failed to retrieve comments');
+    }
+};
+
+
+export const postComment = async (comment, songId) => {
+    try {
+        const headers = {
+            'Authorization': `Token ${authData.access_token}`
+        };
+
+        const response = await axios.post(`${BASE_URL}${songId}/comments/`, comment, {headers});
+
+        return response.data;
+    } catch (error) {
+        throw new Error('Failed to post comment');
+    }
+};
+
