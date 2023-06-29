@@ -1,7 +1,9 @@
-from rest_framework import views, status
+from rest_framework import views, status, pagination
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from .models import Like, Dislike
+from .models import Like, Dislike, Comment
+from .serializers import CommentSerializer
+from ..music_api.models import Song
 
 
 class BaseLikeDislikeAPIView(views.APIView):
@@ -114,3 +116,31 @@ class DislikeSongAPIView(BaseLikeDislikeAPIView):
                                                 self.IS_DISLIKED)
 
         return Response(response_data, status=status.HTTP_201_CREATED)
+
+
+class CustomPagination(pagination.PageNumberPagination):
+    page_size = 10
+
+
+class CommentAPIView(views.APIView):
+    def get(self, request, song_id):
+        try:
+            comments = Comment.objects.filter(comment_to_song_id=song_id)
+        except Comment.DoesNotExist:
+            return Response({"error": "Comments not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, song_id):
+        try:
+            song = Song.objects.get(id=song_id)
+        except Song.DoesNotExist:
+            return Response({"error": "Song not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user_that_commented=request.user, comment_to_song=song)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
