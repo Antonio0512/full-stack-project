@@ -3,6 +3,11 @@ This app is a Music LIBRARY (not player) where users can add songs and albums. T
 
 P.S: This project does not have a player and users cannot listen to music here! They can only find new songs and albums to listen to uploaded by other users.
 
+
+## Documentation
+[Backend Documentation](./backend.md)
+
+
 ## Installation
 To get started with the project, follow the instructions below:
 
